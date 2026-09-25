@@ -1,0 +1,26 @@
+# Render Blueprint for the RZEnergy backend.
+# Deploy: https://render.com > New > Blueprint > select this repo.
+
+services:
+  - type: web
+    name: rzenergy-api
+    runtime: python
+    plan: free
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn server:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /api/
+    autoDeploy: true
+    envVars:
+      - key: MONGO_URL
+        sync: false
+      - key: DB_NAME
+        value: rzenergy
+      - key: CORS_ORIGINS
+        sync: false
+      - key: RESEND_API_KEY
+        sync: false
+      - key: CONTACT_TO_EMAIL
+        value: saibamais@rzenergy.pt
+      - key: CONTACT_FROM_EMAIL
+        value: RZEnergy Site <noreply@rzenergy.pt>

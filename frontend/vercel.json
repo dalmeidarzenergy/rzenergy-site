@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "buildCommand": "yarn build",
+  "outputDirectory": "build",
+  "installCommand": "yarn install --frozen-lockfile=false",
+  "framework": "create-react-app",
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
+}
